@@ -21,7 +21,7 @@
       </ToggleButton>
       <ToggleButton mnemonicParsing="false" onAction="#openListBooks" prefHeight="80.0" prefWidth="150.0" text="%list.books" toggleGroup="$toogleButtons" />
       <ToggleButton mnemonicParsing="false" onAction="#openStatistics" prefHeight="80.0" prefWidth="150.0" text="%stats" toggleGroup="$toogleButtons" />
-      <Button mnemonicParsing="false" onAction="#addBook" prefHeight="80.0" prefWidth="150.0" text="%add_book">
+      <Button graphicTextGap="6.0" mnemonicParsing="false" onAction="#addBook" prefHeight="80.0" prefWidth="150.0" text="%add_book">
          <graphic>
             <ImageView fitHeight="43.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

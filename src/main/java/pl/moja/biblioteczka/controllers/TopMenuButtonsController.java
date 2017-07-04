@@ -38,6 +38,6 @@ public class TopMenuButtonsController {
             toogleButtons.getSelectedToggle().setSelected(false);
         }
 
-        mainController.setCenter("/fxml/addBook.fxml");
+        mainController.setCenter("/fxml/AddBook.fxml");
     }
 }
