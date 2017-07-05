@@ -6,11 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.moja.biblioteczka.utils.DialogsUtils;
 
-import java.io.IOException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController {
@@ -33,22 +35,25 @@ public class MainController {
         Parent parent = null;
         try {
             parent = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            DialogsUtils.errorDialog(e.getMessage());
         }
         borderPane.setCenter(parent);
     }
 
-    public void closeApplication(ActionEvent actionEvent) {
-        Platform.exit();
-        System.exit(0);
+    public void closeApplication() {
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog();
+        if(result.get() == ButtonType.OK) {
+            Platform.exit();
+            System.exit(0);
+        }
     }
 
-    public void setCaspian(ActionEvent actionEvent) {
+    public void setCaspian() {
         Application.setUserAgentStylesheet(Application.STYLESHEET_CASPIAN);
     }
 
-    public void setModena(ActionEvent actionEvent) {
+    public void setModena() {
         Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
     }
 
@@ -58,7 +63,7 @@ public class MainController {
         stage.setAlwaysOnTop(value);
     }
 
-    public void about(ActionEvent actionEvent) {
-
+    public void about() {
+        DialogsUtils.dialogAboutApplication();
     }
 }

@@ -1,32 +1,24 @@
 package pl.moja.biblioteczka;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pl.moja.biblioteczka.utils.FXMLUtils;
 
-import java.io.IOException;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class MyApplication extends Application {
 
+    private static final String BORDER_PANE_MAIN_FXML = "/fxml/BorderPaneMain.fxml";
+
     @Override
     public void start(Stage primaryStage) {
-        Locale.setDefault(new Locale("ru"));
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/BorderPaneMain.fxml"));
-        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
-        loader.setResources(bundle);
-        BorderPane borderPane = null;
-        try {
-            borderPane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Locale.setDefault(new Locale("pl"));
+        Pane borderPane = FXMLUtils.fxmlLoader(BORDER_PANE_MAIN_FXML);
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle(bundle.getString("tittle.application"));
+        primaryStage.setTitle(FXMLUtils.getResourceBundle().getString("tittle.application"));
         primaryStage.show();
     }
 }
